@@ -40,7 +40,7 @@ def build_artist_dict(start, end):
 
 
 def main():
-    ad = build_artist_dict(1, 28000)
+    ad = build_artist_dict(28000, 56000)
     with open('results.p', 'wb') as f:
         pickle.dump(ad, f)
 
