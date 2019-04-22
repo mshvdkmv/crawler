@@ -40,7 +40,11 @@ def build_artist_dict(start, end):
 
 
 def main():
+<<<<<<< HEAD
     ad = build_artist_dict(350001, 400000)
+=======
+    ad = build_artist_dict(28000, 56000)
+>>>>>>> d6c81dd0fd0316cf08de4a6704aa55f35115fbcc
     with open('results.p', 'wb') as f:
         pickle.dump(ad, f)
 
