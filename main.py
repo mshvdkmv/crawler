@@ -1,6 +1,6 @@
 import requests, json
 import pickle
-TOKEN = 'oK0jD065025D3iN4NZFkw64w171DBYy9HJOe0BFDC-huWjb229LOOsXCHe2AuHgo'
+TOKEN = 'ujcJqpQBid1pt6rJDkPKQHMMn5boncVwUTgBGh2DfPUi_MXs824FG9y72YRcr8Km'
 BASE_URL = 'https://api.genius.com'
 
 
