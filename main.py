@@ -1,6 +1,6 @@
 import requests, json
 import pickle
-TOKEN = '0xWXJfZt9aO4aREIfspYr3WZXJLwI_NJboVQf-IJ8edAnWtjNPAvmvct0U-bxYz2'
+TOKEN = 'OPiglDY-dyvACUiyVNv4FDA0xZKA0sOSHABiKbm6J3UL2aMxmc3SdW7KCiS3IW3v'
 BASE_URL = 'https://api.genius.com'
 
 
@@ -66,7 +66,7 @@ def save(name, data):
 
 
 def main():
-    ad, index = build_artist_dict(500000, 550000)
+    ad, index = build_artist_dict(200000, 250000)
     filename = str(index) + '.p'
     with open(filename, 'wb') as f:
         pickle.dump(ad, f)
