@@ -66,7 +66,7 @@ def save(name, data):
 
 
 def main():
-    ad, index = build_artist_dict(1, 28000)
+    ad, index = build_artist_dict(150000, 200000)
     filename = str(index) + '.p'
     with open(filename, 'wb') as f:
         pickle.dump(ad, f)
