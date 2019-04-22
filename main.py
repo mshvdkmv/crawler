@@ -45,7 +45,7 @@ def build_artist_dict(start, end):
                 artist_dict[name].append((link, date))
         start += 1
         counter += 1
-    return artist_dict
+    return artist_dict, start
 
 
 def merge_two_dicts(x, y):
@@ -66,8 +66,9 @@ def save(name, data):
 
 
 def main():
-    ad = build_artist_dict(1, 28000)
-    with open('results.p', 'wb') as f:
+    ad, index = build_artist_dict(1, 28000)
+    filename = str(index) + '.p'
+    with open(filename, 'wb') as f:
         pickle.dump(ad, f)
 
 
