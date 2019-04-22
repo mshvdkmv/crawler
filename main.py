@@ -8,7 +8,7 @@ def get_song_info(song_id):
     headers = {'Authorization': 'Bearer ' + TOKEN}
     search_url = BASE_URL + '/songs/' + str(song_id)
     response = requests.get(search_url, headers=headers).json()
-
+    
     return response
 
 
@@ -27,7 +27,15 @@ def get_artist_and_song_url(song_id):
 
 def build_artist_dict(start, end):
     artist_dict = dict()
+    counter = 1
+    filename = 'data.p'
+    save(filename, artist_dict)
     while start <= end:
+        if counter == 1000:
+            counter = 1
+            previous_results = load(filename)
+            merged = merge_two_dicts(previous_results, artist_dict)
+            save(filename, merged)
         status, name, link, date = get_artist_and_song_url(start)
         if status == 200:
             if name in artist_dict.keys():
@@ -36,15 +44,29 @@ def build_artist_dict(start, end):
                 artist_dict[name] = list()
                 artist_dict[name].append((link, date))
         start += 1
+        counter += 1
     return artist_dict
 
 
+def merge_two_dicts(x, y):
+    z = x.copy()
+    z.update(y)
+    return z
+
+
+def load(name):
+    with open(name, 'rb') as f:
+        data_new = pickle.load(f)
+    return data_new
+
+
+def save(name, data):
+    with open(name, 'wb') as f:
+        pickle.dump(data, f)
+
+
 def main():
-<<<<<<< HEAD
-    ad = build_artist_dict(350001, 400000)
-=======
-    ad = build_artist_dict(28000, 56000)
->>>>>>> d6c81dd0fd0316cf08de4a6704aa55f35115fbcc
+    ad = build_artist_dict(1, 28000)
     with open('results.p', 'wb') as f:
         pickle.dump(ad, f)
 
